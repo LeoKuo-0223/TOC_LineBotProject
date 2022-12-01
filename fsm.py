@@ -152,7 +152,6 @@ class TocMachine(GraphMachine):
                 )
                 line_bot_api.reply_message(reply_token,message)
                 return False
-            return 
         return False
 
     def is_findTanngo_to_User(self, event):
@@ -263,11 +262,11 @@ class TocMachine(GraphMachine):
                 self.word = query
                 if get_dict_result(event, query)==0:
                     self.go_back(event)
+                    return
             else: 
-                # line_bot_api.reply_message(reply_token,TextSendMessage(text="我只看得懂英文喔!"))
                 self.go_back(event)
+                return
         else: 
-            # line_bot_api.reply_message(reply_token,TextSendMessage(text="我只看得懂英文喔!"))
             self.go_back(event)
             
     def on_enter_findTanngo(self,event):
@@ -285,6 +284,7 @@ class TocMachine(GraphMachine):
             else: 
                 # line_bot_api.reply_message(reply_token,TextSendMessage(text="我只看得懂英文喔!"))
                 self.go_back_jisho(event)
+                return
         self.go_back_jisho(event)
         
        
