@@ -42,24 +42,34 @@ def callback():
         reply_token = event.reply_token
         user_id = event.source.user_id
         text = event.postback.data if event.type == 'postback' else event.message.text
+        # if text == "fsm":
+        #     if event.source.user_id not in machines:
+        #         machines[user_id] = create_machine()
+        #     machines[user_id].get_graph().draw("fsm.png", prog="dot", format="png")
+        # line_bot_api.reply_message(reply_token,TextSendMessage(text="test"))
         if event.type == 'postback':
             if is_json(text):
                 word_info = json.loads(text)
                 audio_url = word_info["audio_url"]
                 audio_text = word_info["audio_text"]
-                # print("postback audio_url: ", audio_url)
+                print("postback audio_url: ", audio_url)
                 # print("postback audio_text: ", audio_text)
                 # line_bot_api.push_message(event.source.user_id,TextSendMessage(text=audio_text))
                 if len(audio_url)==0:
-                    line_bot_api.push_message(event.source.user_id,TextSendMessage(text="沒有提供此音檔QQ"))
+                    line_bot_api.reply_message(reply_token,TextSendMessage(text="沒有提供此音檔QQ"))
                 else:
-                    audio_message = AudioSendMessage(
-                        original_content_url=audio_url,
-                        duration=3000
-                    )
-                    line_bot_api.push_message(event.source.user_id, audio_message)
+                    try:
+                        audio_message = AudioSendMessage(
+                            original_content_url=audio_url,
+                            duration=3000
+                        )
+                        line_bot_api.reply_message(reply_token, audio_message)
+                    except:
+                        line_bot_api.reply_message(reply_token,TextSendMessage(text="音檔發生問題QQ"))
             else:
-                line_bot_api.push_message(event.source.user_id,TextSendMessage(text=text))
+                if text not in ["上一步", "離開", "發音"]:
+                    line_bot_api.reply_message(reply_token,TextSendMessage(text=text))
+                
             continue
         #create new fsm for new user
         if event.source.user_id not in machines:
@@ -71,31 +81,6 @@ def callback():
         print(f"New FSM STATE: {machines[user_id].state}")
 
     return 'OK'
-
-
-# @handler.add(MessageEvent, message=TextMessage)
-# def echo(event):
-    
-#     if event.source.user_id != "Udeadbeefdeadbeefdeadbeefdeadbeef":
-#         #create new fsm for new user
-#         if event.source.user_id not in machines:
-#             machines[event.source.user_id] = create_machine()
-#         print(f"\noriginal FSM STATE: {machines[event.source.user_id].state}")
-#         response = machines[event.source.user_id].advance(event)
-#         print(f"\nNew FSM STATE: {machines[event.source.user_id].state}")
-#         if response == False:
-            # send_text_message(event.reply_token, "Not Entering any State")
-
-
-
-
-
-# @app.route("/show-fsm", methods=["GET"])
-# def show_fsm():
-#     machine.get_graph().draw("fsm.png", prog="dot", format="png")
-#     return send_file("fsm.png", mimetype="image/png")
-
-
 
 
 if __name__ == "__main__":

@@ -11,6 +11,7 @@ pygraphviz = "*"
 mutagen = "*"
 pydub = "*"
 google-api-python-client = "*"
+bs4 = "*"
 
 [dev-packages]
 

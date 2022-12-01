@@ -41,7 +41,7 @@ def get_dict_result(event, query):  #find word in dictionary and send back some 
                 example = parse_json[0]['meanings'][i]['definitions'][0]['example']
             except:
                 example="無"
-            info = f"定義: {definition}\n\n範例句子: {example}"
+            info = f"📚定義: {definition}\n\n🖋️範例句子: {example}"
             button = QuickReplyButton(
                 action=PostbackAction(label=partOfSpeech, data = info, text=partOfSpeech)
             )
@@ -66,7 +66,7 @@ def get_dict_result(event, query):  #find word in dictionary and send back some 
         return 1
     except:
         print("fail to search the word")
-        line_bot_api.push_message(event.source.user_id,TextSendMessage(text="找不到單字QQ"))
+        line_bot_api.reply_message(reply_token,TextSendMessage(text="找不到單字QQ"))
         return 0
 
 
