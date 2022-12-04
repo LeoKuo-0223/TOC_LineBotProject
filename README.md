@@ -1,8 +1,8 @@
 # TOC_LineBotProject
-![](https://i.imgur.com/fKmhCBL.png =200x)
+<p align=center>
+    <img src="https://i.imgur.com/fKmhCBL.png" width="200">
+</p>
 
-
-[![hackmd-github-sync-badge](https://hackmd.io/AUHFC3cfRoWkgN86lKHcbA/badge)](https://hackmd.io/AUHFC3cfRoWkgN86lKHcbA)
 > 基於line bot 、網路爬蟲的英、日語及時字典查詢機器人
 
 *#快速回覆功能節省時間*
@@ -29,23 +29,26 @@
 
 ### 功能展示
 #### 查詢英日字典
-![](https://i.imgur.com/GqXCO5K.png =200x)
 
+<p>
+    <img src="https://i.imgur.com/GqXCO5K.png" width="200">
+</p>
 
 ---
 
 #### 查詢英英字典
-![](https://i.imgur.com/JW0aBCL.png =200x)
 
-![](https://i.imgur.com/cJgF7kl.png =200x)
+<p>
+    <img src="https://i.imgur.com/JW0aBCL.png" width="200">
+</p>
 
+<p>
+    <img src="https://i.imgur.com/cJgF7kl.png" width="200">
+</p>
 
 ### 資料來源
 * [jisho](https://jisho.org/)
 * [Free Dictionary API](https://dictionaryapi.dev/)
 
-> [name=LeoKuo-0223]
-> 
-> [time=Mon, Dec 5, 2022 12:09 AM]
 
 
