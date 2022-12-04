@@ -1,5 +1,5 @@
 # TOC_LineBotProject
-<p align=center>
+<p >
     <img src="https://i.imgur.com/fKmhCBL.png" width="200">
 </p>
 
