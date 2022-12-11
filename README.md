@@ -48,7 +48,7 @@
 
 #### FSM
 <p>
-    <img src="https://i.imgur.com/sxIbylt.png" width="200">
+    <img src="https://i.imgur.com/sxIbylt.png">
 </p>
 
 
