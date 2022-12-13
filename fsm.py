@@ -128,10 +128,16 @@ class TocMachine(GraphMachine):
                 line_bot_api.reply_message(reply_token,self.message)
                 return False
             elif  ((text[:4] != "英英字典") and (text[:4] != "英日字典")):
-                line_bot_api.reply_message(reply_token,self.message)
+                try:
+                    line_bot_api.reply_message(reply_token,self.message)
+                except:
+                    pass
                 return False
             elif (text[:4] == "英英字典"): return True
-        line_bot_api.reply_message(reply_token,self.message)
+        try:
+            line_bot_api.reply_message(reply_token,self.message)
+        except:
+            pass
         return False
 
 
@@ -248,7 +254,10 @@ class TocMachine(GraphMachine):
                 items=items
             )
         )
-        line_bot_api.reply_message(reply_token,message)
+        try:
+            line_bot_api.reply_message(reply_token,message)
+        except:
+            pass
         
     def on_enter_findWord(self,event):
         reply_token = event.reply_token
